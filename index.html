@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jishnuu Senthil Kumar</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #222;
+    background: #ffffff;
+    line-height: 1.6;
+  }
+
+  a { color: #1a4d80; }
+
+  #wrap { max-width: 820px; margin: 0 auto; padding: 30px 20px; }
+
+  /* Header */
+  #header { border-bottom: 1px solid #ccc; padding-bottom: 14px; margin-bottom: 20px; }
+  #header h1 { font-size: 24px; margin-bottom: 4px; }
+  #header .tag { color: #555; }
+  #header .contact { color: #555; font-size: 13px; margin-top: 6px; }
+
+  /* Layout */
+  #main { display: flex; gap: 30px; }
+
+  #sidebar { width: 150px; flex-shrink: 0; }
+  #sidebar ul { list-style: none; }
+  #sidebar li { margin-bottom: 2px; }
+  #sidebar a {
+    display: block;
+    padding: 6px 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  #sidebar a:hover { background: #f2f2f2; }
+  #sidebar a.active { background: #eee; font-weight: bold; color: #000; }
+
+  #content { flex: 1; }
+
+  section { display: none; }
+  section.on { display: block; }
+
+  h2 { font-size: 18px; margin-bottom: 14px; }
+  h3 { font-size: 14px; margin-top: 4px; }
+  .meta { color: #777; font-size: 13px; }
+  p { margin-bottom: 12px; }
+
+  .item { margin-bottom: 18px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; }
+  ul.pts { margin: 6px 0 0 18px; }
+  ul.pts li { margin-bottom: 4px; }
+
+  .skillgroup { margin-bottom: 14px; }
+
+  #footer { border-top: 1px solid #ccc; margin-top: 30px; padding-top: 12px; color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="wrap">
+
+  <div id="header">
+    <h1>Jishnuu Senthil Kumar</h1>
+    <div class="tag">Computer Science &amp; Bioengineering &mdash; University of Pennsylvania</div>
+    <div class="contact">
+      (510)&nbsp;963-7888 &nbsp;|&nbsp;
+      <a href="mailto:jishnuu.senthil@gmail.com">jishnuu.senthil@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/jishnuu-sk" target="_blank">LinkedIn</a> &nbsp;|&nbsp;
+      <a href="https://www.github.com/jissen706" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div id="main">
+
+    <div id="sidebar">
+      <ul>
+        <li><a href="#home" class="nav active">Home</a></li>
+        <li><a href="#work" class="nav">Work Experience</a></li>
+        <li><a href="#projects" class="nav">Projects</a></li>
+        <li><a href="#awards" class="nav">Awards</a></li>
+        <li><a href="#skills" class="nav">Skills</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+
+      <!-- HOME -->
+      <section id="home" class="on">
+        <h2>About Me</h2>
+        <p>
+          Hello &mdash; I&rsquo;m Jishnuu, a Computer Science &amp; Bioengineering student at the
+          University of Pennsylvania (B.S.E., GPA 3.80, graduating May&nbsp;2028). I build software
+          across the stack: data infrastructure, machine learning pipelines, and signal-processing
+          systems &mdash; often where computing meets the life sciences.
+        </p>
+        <p>
+          I&rsquo;ve most recently been a Software Engineer Intern at Snowflake, and I&rsquo;ve
+          done ML research at Penn&rsquo;s Forti Lab and Stanford&rsquo;s Heller Lab. I enjoy shipping
+          things that are fast, reliable, and genuinely useful &mdash; from analytics datastores serving
+          10k+ endpoints to hackathon-winning real-time ML pipelines.
+        </p>
+        <p class="meta">Use the menu on the left to browse my experience, projects, awards, and skills.</p>
+      </section>
+
+      <!-- WORK -->
+      <section id="work">
+        <h2>Work Experience</h2>
+
+        <div class="item">
+          <div class="row"><h3>Snowflake &mdash; Software Engineer Intern</h3><span class="meta">May 2026 &ndash; Aug 2026</span></div>
+          <div class="meta">Menlo Park, California</div>
+          <ul class="pts">
+            <li>Designed and built an analytics datastore for 10k+ corporate endpoints; implemented Snowpipe ingestions, a custom data agent, and an observability platform &mdash; projected to save $1M+ annually.</li>
+            <li>Optimized CrowdStrike Falcon&rsquo;s OS-level performance on macOS, reducing CPU usage by ~40% and automating recovery of stale sensors.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>Dolcera IP Author &mdash; Software Engineer Intern</h3><span class="meta">Nov 2025 &ndash; Feb 2026</span></div>
+          <div class="meta">San Mateo, California</div>
+          <ul class="pts">
+            <li>Built an EC2 routing system optimizing idle-time compute and predictive warm starts/caching &mdash; delivered 6-figure savings.</li>
+            <li>Improved patent ingestion and the RAG pipeline across API fetching, parsing, and retrieval to boost processing reliability.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>University of Pennsylvania, Dr. Forti Lab &mdash; ML Researcher</h3><span class="meta">Oct 2025 &ndash; Present</span></div>
+          <div class="meta">Philadelphia, Pennsylvania</div>
+          <ul class="pts">
+            <li>Developed a sliding-window inference pipeline to detect intracranial-pressure elevations from 4 physiological waveforms.</li>
+            <li>Built signal-processing software for artifact removal, band-pass filtering, normalization, and Fourier transforms.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>Stanford University, Craig Heller Lab &mdash; Researcher</h3><span class="meta">May 2024 &ndash; Mar 2025</span></div>
+          <div class="meta">Palo Alto, California</div>
+          <ul class="pts">
+            <li>Developed software for a thermoelectric cooling glove to mitigate CIPN in cancer patients; co-inventor on a provisional patent.</li>
+            <li>Built a vasoconstriction classifier integrating temperature, doppler blood-flow, and heat-flux to automatically regulate cooling.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <h2>Projects &amp; Leadership</h2>
+
+        <div class="item">
+          <div class="row"><h3>Open Source Contributor &mdash; Scikit-bio</h3><span class="meta">Jan 2026 &ndash; Present</span></div>
+          <ul class="pts">
+            <li>Active contributor to scikit-bio, a leading Python bioinformatics library (100K+ monthly downloads).</li>
+            <li>Improved core tree data structures, biological file parsers, public APIs &amp; backward compatibility, and CI security.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>CoffeeMeet</h3><span class="meta">Apr 2026 &ndash; Present</span></div>
+          <ul class="pts">
+            <li>Built and deployed a coffee-chat matching platform adopted by the Penn Engineering Council and 30+ student organizations.</li>
+            <li>Designed frontend + backend for matching and role-based access control, with calendar/mailing integrations.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>Machine Learning Instructor &mdash; Wharton Data Analytics Club</h3><span class="meta">Sep 2025 &ndash; Present</span></div>
+          <ul class="pts">
+            <li>Teach bi-weekly to 100+ Penn students, covering ML &amp; data science, Python, model training, and data pipelines.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- AWARDS -->
+      <section id="awards">
+        <h2>Awards &mdash; Selected Hackathon Wins</h2>
+
+        <div class="item">
+          <div class="row"><h3>1st of 80+ &mdash; Anthropic x Penn Hackathon</h3></div>
+          <ul class="pts">
+            <li>Built a real-time ML pipeline extracting 54 audio features for Parkinson&rsquo;s detection.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>1st of 62 &mdash; Harvard University HackRare</h3></div>
+          <ul class="pts">
+            <li>Built a multi-source vector database and retrieval engine for drug-repurposing.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>3rd of 160+ &mdash; Y Combinator Hackathon</h3></div>
+          <ul class="pts">
+            <li>Built a real-time overhearing voice agent with persistent memory, async retrieval, and approval-gated tool execution.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <h2>Skills</h2>
+
+        <div class="skillgroup">
+          <b>Languages:</b> Python, Java, C, C++, OCaml, SQL, JavaScript, Bash
+        </div>
+
+        <div class="skillgroup">
+          <b>Frameworks &amp; Libraries:</b> PyTorch, scikit-learn, Hugging Face, React, Next.js, NumPy, pandas, SciPy, Dash
+        </div>
+
+        <div class="skillgroup">
+          <b>Data &amp; Infrastructure:</b> AWS (EC2, API Gateway, Lambda, Secrets Manager, S3), Snowflake, Kafka, PostgreSQL, dbt, Docker, Redis, Linux, Git, CI/CD, REST APIs
+        </div>
+
+        <div class="skillgroup">
+          <b>Relevant Coursework:</b> Data Structures &amp; Algorithms, Computer Architecture, Operating Systems Design,
+          Programming Languages, Discrete Mathematics, Machine Learning, AI Foundations in Linear Algebra, Databases, Automata &amp; Complexity
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    &copy; 2026 Jishnuu Senthil Kumar
+  </div>
+</div>
+
+<script>
+  var links = document.querySelectorAll('#sidebar a.nav');
+  var sections = document.querySelectorAll('#content section');
+  for (var i = 0; i < links.length; i++) {
+    links[i].onclick = function (e) {
+      e.preventDefault();
+      var id = this.getAttribute('href').substring(1);
+      for (var j = 0; j < links.length; j++) links[j].className = 'nav';
+      this.className = 'nav active';
+      for (var k = 0; k < sections.length; k++) sections[k].className = '';
+      document.getElementById(id).className = 'on';
+    };
+  }
+</script>
+</body>
+</html>
