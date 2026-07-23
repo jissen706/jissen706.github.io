@@ -17,7 +17,7 @@
 
   a { color: #1a4d80; }
 
-  #wrap { max-width: 820px; margin: 0 auto; padding: 30px 20px; }
+  #wrap { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
 
   /* Header */
   #header { border-bottom: 1px solid #ccc; padding-bottom: 14px; margin-bottom: 20px; }
@@ -28,19 +28,39 @@
   /* Layout */
   #main { display: flex; gap: 30px; }
 
-  #sidebar { width: 150px; flex-shrink: 0; }
+  #sidebar { width: 190px; flex-shrink: 0; }
   #sidebar ul { list-style: none; }
-  #sidebar li { margin-bottom: 2px; }
-  #sidebar a {
+  #sidebar li { margin-bottom: 1px; }
+
+  /* Top-level links / group headers */
+  #sidebar a.top {
     display: block;
     padding: 6px 10px;
     text-decoration: none;
     color: #333;
   }
-  #sidebar a:hover { background: #f2f2f2; }
-  #sidebar a.active { background: #eee; font-weight: bold; color: #000; }
+  #sidebar a.top:hover { background: #f2f2f2; }
+  #sidebar a.top.active { background: #eee; font-weight: bold; color: #000; }
 
-  #content { flex: 1; }
+  /* Group header with arrow */
+  .group > a.top { position: relative; }
+  .arrow { display: inline-block; width: 12px; color: #888; font-size: 11px; transition: transform 0.15s; }
+  .group.open .arrow { transform: rotate(90deg); }
+
+  /* Submenu */
+  .submenu { list-style: none; display: none; margin: 0 0 4px 0; }
+  .group.open .submenu { display: block; }
+  .submenu a {
+    display: block;
+    padding: 4px 10px 4px 28px;
+    text-decoration: none;
+    color: #444;
+    font-size: 13px;
+  }
+  .submenu a:hover { background: #f2f2f2; }
+  .submenu a.active { background: #eee; font-weight: bold; color: #000; }
+
+  #content { flex: 1; min-width: 0; }
 
   section { display: none; }
   section.on { display: block; }
@@ -50,10 +70,18 @@
   .meta { color: #777; font-size: 13px; }
   p { margin-bottom: 12px; }
 
-  .item { margin-bottom: 18px; }
-  .row { display: flex; justify-content: space-between; align-items: baseline; }
-  ul.pts { margin: 6px 0 0 18px; }
+  .item { margin-bottom: 16px; }
+  .item .oneline { color: #333; }
+  .item a.view { font-size: 13px; }
+
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  ul.pts { margin: 8px 0 0 18px; }
   ul.pts li { margin-bottom: 4px; }
+
+  .links { margin-top: 12px; font-size: 13px; }
+  .links b { color: #444; }
+
+  .back { display: inline-block; margin-bottom: 14px; font-size: 13px; }
 
   .skillgroup { margin-bottom: 14px; }
 
@@ -78,11 +106,37 @@
 
     <div id="sidebar">
       <ul>
-        <li><a href="#home" class="nav active">Home</a></li>
-        <li><a href="#work" class="nav">Work Experience</a></li>
-        <li><a href="#projects" class="nav">Projects</a></li>
-        <li><a href="#awards" class="nav">Awards</a></li>
-        <li><a href="#skills" class="nav">Skills</a></li>
+        <li><a href="#home" class="top nav active">Home</a></li>
+
+        <li class="group" id="g-work">
+          <a href="#work" class="top nav"><span class="arrow">&#9656;</span> Work Experience</a>
+          <ul class="submenu">
+            <li><a href="#work-snowflake" class="nav">Snowflake</a></li>
+            <li><a href="#work-dolcera" class="nav">Dolcera IP Author</a></li>
+            <li><a href="#work-forti" class="nav">Penn - Forti Lab</a></li>
+            <li><a href="#work-heller" class="nav">Stanford - Heller Lab</a></li>
+          </ul>
+        </li>
+
+        <li class="group" id="g-projects">
+          <a href="#projects" class="top nav"><span class="arrow">&#9656;</span> Projects</a>
+          <ul class="submenu">
+            <li><a href="#proj-scikitbio" class="nav">Scikit-bio</a></li>
+            <li><a href="#proj-coffeemeet" class="nav">CoffeeMeet</a></li>
+            <li><a href="#proj-wharton" class="nav">Wharton ML Instructor</a></li>
+          </ul>
+        </li>
+
+        <li class="group" id="g-awards">
+          <a href="#awards" class="top nav"><span class="arrow">&#9656;</span> Awards</a>
+          <ul class="submenu">
+            <li><a href="#award-anthropic" class="nav">Anthropic x Penn</a></li>
+            <li><a href="#award-harvard" class="nav">Harvard HackRare</a></li>
+            <li><a href="#award-yc" class="nav">Y Combinator</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#skills" class="top nav">Skills</a></li>
       </ul>
     </div>
 
@@ -95,113 +149,242 @@
           Hello - I&rsquo;m Jishnuu, a Computer Science &amp; Bioengineering student at the
           University of Pennsylvania (B.S.E., GPA 3.80, graduating May&nbsp;2028). I build software
           across the stack: data infrastructure, machine learning pipelines, and signal-processing
-          systems - often where computing meets the life sciences.
+          systems, often where computing meets the life sciences.
         </p>
         <p>
           I&rsquo;ve most recently been a Software Engineer Intern at Snowflake, and I&rsquo;ve
           done ML research at Penn&rsquo;s Forti Lab and Stanford&rsquo;s Heller Lab. I enjoy shipping
-          things that are fast, reliable, and genuinely useful - from analytics datastores serving
+          things that are fast, reliable, and genuinely useful, from analytics datastores serving
           10k+ endpoints to hackathon-winning real-time ML pipelines.
         </p>
-        <p class="meta">Use the menu on the left to browse my experience, projects, awards, and skills.</p>
+        <p class="meta">Use the menu on the left. Click a section&rsquo;s arrow to jump straight to an item.</p>
       </section>
 
-      <!-- WORK -->
+      <!-- ===================== WORK: OVERVIEW ===================== -->
       <section id="work">
         <h2>Work Experience</h2>
 
         <div class="item">
           <div class="row"><h3>Snowflake - Software Engineer Intern</h3><span class="meta">May 2026 &ndash; Aug 2026</span></div>
-          <div class="meta">Menlo Park, California</div>
-          <ul class="pts">
-            <li>Designed and built an analytics datastore for 10k+ corporate endpoints; implemented Snowpipe ingestions, a custom data agent, and an observability platform - projected to save $1M+ annually.</li>
-            <li>Optimized CrowdStrike Falcon&rsquo;s OS-level performance on macOS, reducing CPU usage by ~40% and automating recovery of stale sensors.</li>
-          </ul>
+          <div class="oneline">Built an analytics datastore for 10k+ corporate endpoints, projected to save $1M+ annually.</div>
+          <a href="#work-snowflake" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
           <div class="row"><h3>Dolcera IP Author - Software Engineer Intern</h3><span class="meta">Nov 2025 &ndash; Feb 2026</span></div>
-          <div class="meta">San Mateo, California</div>
-          <ul class="pts">
-            <li>Built an EC2 routing system optimizing idle-time compute and predictive warm starts/caching - delivered 6-figure savings.</li>
-            <li>Improved patent ingestion and the RAG pipeline across API fetching, parsing, and retrieval to boost processing reliability.</li>
-          </ul>
+          <div class="oneline">Built an EC2 routing system delivering 6-figure compute savings.</div>
+          <a href="#work-dolcera" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
-          <div class="row"><h3>University of Pennsylvania, Dr. Forti Lab - ML Researcher</h3><span class="meta">Oct 2025 &ndash; Present</span></div>
-          <div class="meta">Philadelphia, Pennsylvania</div>
-          <ul class="pts">
-            <li>Developed a sliding-window inference pipeline to detect intracranial-pressure elevations from 4 physiological waveforms.</li>
-            <li>Built signal-processing software for artifact removal, band-pass filtering, normalization, and Fourier transforms.</li>
-          </ul>
+          <div class="row"><h3>Penn, Dr. Forti Lab - ML Researcher</h3><span class="meta">Oct 2025 &ndash; Present</span></div>
+          <div class="oneline">Built a pipeline to detect intracranial-pressure elevations from physiological waveforms.</div>
+          <a href="#work-forti" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
-          <div class="row"><h3>Stanford University, Craig Heller Lab - Researcher</h3><span class="meta">May 2024 &ndash; Mar 2025</span></div>
-          <div class="meta">Palo Alto, California</div>
-          <ul class="pts">
-            <li>Developed software for a thermoelectric cooling glove to mitigate CIPN in cancer patients; co-inventor on a provisional patent.</li>
-            <li>Built a vasoconstriction classifier integrating temperature, doppler blood-flow, and heat-flux to automatically regulate cooling.</li>
-          </ul>
+          <div class="row"><h3>Stanford, Craig Heller Lab - Researcher</h3><span class="meta">May 2024 &ndash; Mar 2025</span></div>
+          <div class="oneline">Built software for a thermoelectric cooling glove to mitigate CIPN in cancer patients.</div>
+          <a href="#work-heller" class="view nav">View details &raquo;</a>
         </div>
       </section>
 
-      <!-- PROJECTS -->
+      <!-- WORK: DETAIL STUBS -->
+      <section id="work-snowflake">
+        <a href="#work" class="back nav">&laquo; Work Experience</a>
+        <div class="row"><h2>Snowflake</h2><span class="meta">May 2026 &ndash; Aug 2026</span></div>
+        <div class="meta">Software Engineer Intern &middot; Menlo Park, California</div>
+        <ul class="pts">
+          <li>Designed and built an analytics datastore for 10k+ corporate endpoints; implemented Snowpipe ingestions, a custom data agent, and an observability platform, projected to save $1M+ annually.</li>
+          <li>Optimized CrowdStrike Falcon&rsquo;s OS-level performance on macOS, reducing CPU usage by ~40% and automating recovery of stale sensors.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Company</a> &middot;
+          <a href="#" target="_blank">Add link</a>
+        </div>
+      </section>
+
+      <section id="work-dolcera">
+        <a href="#work" class="back nav">&laquo; Work Experience</a>
+        <div class="row"><h2>Dolcera IP Author</h2><span class="meta">Nov 2025 &ndash; Feb 2026</span></div>
+        <div class="meta">Software Engineer Intern &middot; San Mateo, California</div>
+        <ul class="pts">
+          <li>Built an EC2 routing system optimizing idle-time compute and predictive warm starts/caching, delivering 6-figure savings.</li>
+          <li>Improved patent ingestion and the RAG pipeline across API fetching, parsing, and retrieval to boost processing reliability.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Company</a> &middot;
+          <a href="#" target="_blank">Add link</a>
+        </div>
+      </section>
+
+      <section id="work-forti">
+        <a href="#work" class="back nav">&laquo; Work Experience</a>
+        <div class="row"><h2>University of Pennsylvania, Dr. Forti Lab</h2><span class="meta">Oct 2025 &ndash; Present</span></div>
+        <div class="meta">ML Researcher &middot; Philadelphia, Pennsylvania</div>
+        <ul class="pts">
+          <li>Developed a sliding-window inference pipeline to detect intracranial-pressure elevations from 4 physiological waveforms.</li>
+          <li>Built signal-processing software for artifact removal, band-pass filtering, normalization, and Fourier transforms.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Lab</a> &middot;
+          <a href="#" target="_blank">Add link</a>
+        </div>
+      </section>
+
+      <section id="work-heller">
+        <a href="#work" class="back nav">&laquo; Work Experience</a>
+        <div class="row"><h2>Stanford University, Craig Heller Lab</h2><span class="meta">May 2024 &ndash; Mar 2025</span></div>
+        <div class="meta">Researcher &middot; Palo Alto, California</div>
+        <ul class="pts">
+          <li>Developed software for a thermoelectric cooling glove to mitigate CIPN in cancer patients; co-inventor on a provisional patent.</li>
+          <li>Built a vasoconstriction classifier integrating temperature, doppler blood-flow, and heat-flux to automatically regulate cooling.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Lab</a> &middot;
+          <a href="#" target="_blank">Patent</a>
+        </div>
+      </section>
+
+      <!-- ===================== PROJECTS: OVERVIEW ===================== -->
       <section id="projects">
         <h2>Projects &amp; Leadership</h2>
 
         <div class="item">
-          <div class="row"><h3>Open Source Contributor - Scikit-bio</h3><span class="meta">Jan 2026 &ndash; Present</span></div>
-          <ul class="pts">
-            <li>Active contributor to scikit-bio, a leading Python bioinformatics library (100K+ monthly downloads).</li>
-            <li>Improved core tree data structures, biological file parsers, public APIs &amp; backward compatibility, and CI security.</li>
-          </ul>
+          <div class="row"><h3>Scikit-bio - Open Source Contributor</h3><span class="meta">Jan 2026 &ndash; Present</span></div>
+          <div class="oneline">Contributor to scikit-bio, a Python bioinformatics library with 100K+ monthly downloads.</div>
+          <a href="#proj-scikitbio" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
           <div class="row"><h3>CoffeeMeet</h3><span class="meta">Apr 2026 &ndash; Present</span></div>
-          <ul class="pts">
-            <li>Built and deployed a coffee-chat matching platform adopted by the Penn Engineering Council and 30+ student organizations.</li>
-            <li>Designed frontend + backend for matching and role-based access control, with calendar/mailing integrations.</li>
-          </ul>
+          <div class="oneline">Coffee-chat matching platform adopted by the Penn Engineering Council and 30+ orgs.</div>
+          <a href="#proj-coffeemeet" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
-          <div class="row"><h3>Machine Learning Instructor - Wharton Data Analytics Club</h3><span class="meta">Sep 2025 &ndash; Present</span></div>
-          <ul class="pts">
-            <li>Teach bi-weekly to 100+ Penn students, covering ML &amp; data science, Python, model training, and data pipelines.</li>
-          </ul>
+          <div class="row"><h3>Wharton Data Analytics Club - ML Instructor</h3><span class="meta">Sep 2025 &ndash; Present</span></div>
+          <div class="oneline">Teach ML &amp; data science bi-weekly to 100+ Penn students.</div>
+          <a href="#proj-wharton" class="view nav">View details &raquo;</a>
         </div>
       </section>
 
-      <!-- AWARDS -->
+      <!-- PROJECTS: DETAIL STUBS -->
+      <section id="proj-scikitbio">
+        <a href="#projects" class="back nav">&laquo; Projects</a>
+        <div class="row"><h2>Scikit-bio</h2><span class="meta">Jan 2026 &ndash; Present</span></div>
+        <div class="meta">Open Source Contributor</div>
+        <ul class="pts">
+          <li>Active contributor to scikit-bio, a leading Python bioinformatics library (100K+ monthly downloads).</li>
+          <li>Improved core tree data structures, biological file parsers, public APIs &amp; backward compatibility, and CI security.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="https://github.com/scikit-bio/scikit-bio" target="_blank">Project repo</a> &middot;
+          <a href="#" target="_blank">My contributions</a>
+        </div>
+      </section>
+
+      <section id="proj-coffeemeet">
+        <a href="#projects" class="back nav">&laquo; Projects</a>
+        <div class="row"><h2>CoffeeMeet</h2><span class="meta">Apr 2026 &ndash; Present</span></div>
+        <div class="meta">Founder / Full-Stack Developer</div>
+        <ul class="pts">
+          <li>Built and deployed a coffee-chat matching platform adopted by the Penn Engineering Council and 30+ student organizations.</li>
+          <li>Designed frontend + backend for matching and role-based access control, with calendar/mailing integrations.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Live site</a> &middot;
+          <a href="#" target="_blank">Repo</a>
+        </div>
+      </section>
+
+      <section id="proj-wharton">
+        <a href="#projects" class="back nav">&laquo; Projects</a>
+        <div class="row"><h2>Machine Learning Instructor</h2><span class="meta">Sep 2025 &ndash; Present</span></div>
+        <div class="meta">Wharton Data Analytics Club</div>
+        <ul class="pts">
+          <li>Teach bi-weekly to 100+ Penn students, covering ML &amp; data science, Python, model training, and data pipelines.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Club</a> &middot;
+          <a href="#" target="_blank">Materials</a>
+        </div>
+      </section>
+
+      <!-- ===================== AWARDS: OVERVIEW ===================== -->
       <section id="awards">
         <h2>Awards - Selected Hackathon Wins</h2>
 
         <div class="item">
-          <div class="row"><h3>1st of 80+ - Anthropic x Penn Hackathon</h3></div>
-          <ul class="pts">
-            <li>Built a real-time ML pipeline extracting 54 audio features for Parkinson&rsquo;s detection.</li>
-          </ul>
+          <div class="row"><h3>Anthropic x Penn Hackathon</h3><span class="meta">1st of 80+</span></div>
+          <div class="oneline">Real-time ML pipeline extracting 54 audio features for Parkinson&rsquo;s detection.</div>
+          <a href="#award-anthropic" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
-          <div class="row"><h3>1st of 62 - Harvard University HackRare</h3></div>
-          <ul class="pts">
-            <li>Built a multi-source vector database and retrieval engine for drug-repurposing.</li>
-          </ul>
+          <div class="row"><h3>Harvard University HackRare</h3><span class="meta">1st of 62</span></div>
+          <div class="oneline">Multi-source vector database and retrieval engine for drug-repurposing.</div>
+          <a href="#award-harvard" class="view nav">View details &raquo;</a>
         </div>
 
         <div class="item">
-          <div class="row"><h3>3rd of 160+ - Y Combinator Hackathon</h3></div>
-          <ul class="pts">
-            <li>Built a real-time overhearing voice agent with persistent memory, async retrieval, and approval-gated tool execution.</li>
-          </ul>
+          <div class="row"><h3>Y Combinator Hackathon</h3><span class="meta">3rd of 160+</span></div>
+          <div class="oneline">Real-time overhearing voice agent with persistent memory and async retrieval.</div>
+          <a href="#award-yc" class="view nav">View details &raquo;</a>
         </div>
       </section>
 
-      <!-- SKILLS -->
+      <!-- AWARDS: DETAIL STUBS -->
+      <section id="award-anthropic">
+        <a href="#awards" class="back nav">&laquo; Awards</a>
+        <div class="row"><h2>Anthropic x Penn Hackathon</h2><span class="meta">1st of 80+</span></div>
+        <div class="meta">Winner &middot; 2026</div>
+        <ul class="pts">
+          <li>Built a real-time ML pipeline extracting 54 audio features for Parkinson&rsquo;s detection.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Devpost</a> &middot;
+          <a href="#" target="_blank">Repo</a>
+        </div>
+      </section>
+
+      <section id="award-harvard">
+        <a href="#awards" class="back nav">&laquo; Awards</a>
+        <div class="row"><h2>Harvard University HackRare</h2><span class="meta">1st of 62</span></div>
+        <div class="meta">Winner &middot; 2026</div>
+        <ul class="pts">
+          <li>Built a multi-source vector database and retrieval engine for drug-repurposing.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Devpost</a> &middot;
+          <a href="#" target="_blank">Repo</a>
+        </div>
+      </section>
+
+      <section id="award-yc">
+        <a href="#awards" class="back nav">&laquo; Awards</a>
+        <div class="row"><h2>Y Combinator Hackathon</h2><span class="meta">3rd of 160+</span></div>
+        <div class="meta">Finalist &middot; 2026</div>
+        <ul class="pts">
+          <li>Built a real-time overhearing voice agent with persistent memory, async retrieval, and approval-gated tool execution.</li>
+        </ul>
+        <div class="links">
+          <b>Links:</b>
+          <a href="#" target="_blank">Devpost</a> &middot;
+          <a href="#" target="_blank">Repo</a>
+        </div>
+      </section>
+
+      <!-- ===================== SKILLS ===================== -->
       <section id="skills">
         <h2>Skills</h2>
 
@@ -232,16 +415,43 @@
 </div>
 
 <script>
-  var links = document.querySelectorAll('#sidebar a.nav');
+  var navLinks = document.querySelectorAll('#sidebar a.nav');
   var sections = document.querySelectorAll('#content section');
-  for (var i = 0; i < links.length; i++) {
-    links[i].onclick = function (e) {
+
+  // Which sidebar group each section belongs to (so the right dropdown opens)
+  var groupOf = {
+    'work': 'g-work', 'work-snowflake': 'g-work', 'work-dolcera': 'g-work',
+    'work-forti': 'g-work', 'work-heller': 'g-work',
+    'projects': 'g-projects', 'proj-scikitbio': 'g-projects',
+    'proj-coffeemeet': 'g-projects', 'proj-wharton': 'g-projects',
+    'awards': 'g-awards', 'award-anthropic': 'g-awards',
+    'award-harvard': 'g-awards', 'award-yc': 'g-awards'
+  };
+
+  function show(id) {
+    // show the target section
+    for (var k = 0; k < sections.length; k++) sections[k].className = '';
+    var target = document.getElementById(id);
+    if (target) target.className = 'on';
+
+    // highlight the matching sidebar link(s)
+    for (var j = 0; j < navLinks.length; j++) {
+      navLinks[j].classList.toggle('active', navLinks[j].getAttribute('href') === '#' + id);
+    }
+
+    // open the owning group, close the others
+    var groups = document.querySelectorAll('#sidebar .group');
+    var owner = groupOf[id];
+    for (var g = 0; g < groups.length; g++) {
+      groups[g].classList.toggle('open', groups[g].id === owner);
+    }
+    window.scrollTo(0, 0);
+  }
+
+  for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].onclick = function (e) {
       e.preventDefault();
-      var id = this.getAttribute('href').substring(1);
-      for (var j = 0; j < links.length; j++) links[j].className = 'nav';
-      this.className = 'nav active';
-      for (var k = 0; k < sections.length; k++) sections[k].className = '';
-      document.getElementById(id).className = 'on';
+      show(this.getAttribute('href').substring(1));
     };
   }
 </script>
