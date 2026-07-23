@@ -126,6 +126,8 @@
           <ul class="submenu">
             <li><a href="#proj-scikitbio" class="nav">Scikit-bio</a></li>
             <li><a href="#proj-coffeemeet" class="nav">CoffeeMeet</a></li>
+            <li><a href="#proj-harvardmed" class="nav">Lung Cancer Research</a></li>
+            <li><a href="#award-conrad" class="nav">ChemoCool</a></li>
           </ul>
         </li>
 
@@ -261,6 +263,18 @@
           <a href="#proj-coffeemeet" class="view nav">View details &raquo;</a>
         </div>
 
+        <div class="item">
+          <div class="row"><h3>Lung Cancer Researcher - Harvard Medical School</h3></div>
+          <div class="oneline">Designed a bronchoscope and built a PyTorch AI tumor-detection model for lung cancer diagnosis.</div>
+          <a href="#proj-harvardmed" class="view nav">View details &raquo;</a>
+        </div>
+
+        <div class="item">
+          <div class="row"><h3>ChemoCool</h3><span class="meta">Conrad Challenge Finalist</span></div>
+          <div class="oneline">Wearable thermoelectric cooling glove to reduce chemotherapy nerve damage (CIPN).</div>
+          <a href="#award-conrad" class="view nav">View details &raquo;</a>
+        </div>
+
       </section>
 
       <!-- PROJECTS: DETAIL STUBS -->
@@ -293,6 +307,18 @@
           <b>Links:</b>
           <a href="https://coffeemeet-frontend.vercel.app/" target="_blank">Live site</a>
         </div>
+      </section>
+
+      <section id="proj-harvardmed">
+        <a href="#projects" class="back nav">&laquo; Projects</a>
+        <div class="row"><h2>Lung Cancer Researcher</h2><span class="meta">Harvard Medical School</span></div>
+        <div class="meta">MEDscience, Harvard Medical School</div>
+        <ul class="pts">
+          <li>Designed a bronchoscope for lung cancer diagnosis and engineered an AI tumor-detection model on 400+ images (PyTorch).</li>
+          <li>Engaged in physician and patient panels to optimize UI design and ergonomics.</li>
+          <li>Presented the work at Harvard Medical School.</li>
+        </ul>
+        <img class="shot" src="images/harvard-med.jpg" alt="At Harvard Medical School (MEDscience)" onerror="this.style.display='none'" style="max-width:340px;">
       </section>
 
       <!-- ===================== TEACHING ===================== -->
@@ -417,24 +443,34 @@
 
       <section id="award-conrad">
         <a href="#awards" class="back nav">&laquo; Awards</a>
-        <div class="row"><h2>Conrad Challenge - Finalist</h2><span class="meta">ChemoCool</span></div>
-        <div class="meta">Conrad Challenge &middot; National Finalist</div>
+        <div class="row"><h2>ChemoCool</h2><span class="meta">Conrad Challenge - National Finalist</span></div>
+        <div class="meta">Wearable thermoelectric cooling glove</div>
+
         <p style="margin-top:12px;">
-          ChemoCool is a wearable thermoelectric cooling glove I helped design to reduce
-          chemotherapy-induced peripheral neuropathy (CIPN) - the nerve damage and hand pain
-          many cancer patients develop during treatment. Localized cooling constricts blood
-          vessels in the hand, limiting how much chemotherapy drug reaches the extremities,
-          which is clinically linked to less neuropathy.
+          <b>The device.</b> ChemoCool is a wearable cooling glove built to reduce
+          chemotherapy-induced peripheral neuropathy (CIPN) - the nerve damage and hand pain many
+          cancer patients develop during treatment. Cooling the hand constricts local blood vessels,
+          limiting how much chemotherapy drug reaches the extremities, which is clinically linked to
+          less neuropathy.
         </p>
         <p>
-          The device pairs a Peltier (thermoelectric) module with a heat sink, fan, and water
-          pouch to actively pull heat from the hand, driven by a wrist-worn battery and button
-          controller. It was named a <b>Conrad Challenge Finalist</b>, and the work grew into
-          my thermoelectric-cooling research and a co-invented provisional patent in Stanford&rsquo;s
-          Craig Heller Lab.
+          <b>How it works.</b> A Peltier (thermoelectric) module sits against the palm and pumps heat
+          into a heat sink, fan, and water pouch that carry it away, while a wrist-worn battery and
+          push-button controller let the wearer switch cooling on and off. The whole assembly mounts
+          on a lightweight glove so it stays comfortable across a full chemotherapy session.
         </p>
+
         <img class="shot" src="images/chemocool-device.jpg" alt="ChemoCool cooling glove prototype worn on a hand">
         <img class="shot" src="images/chemocool-parts.png" alt="ChemoCool components: fan, heat sink, Peltier module, water pouch">
+
+        <p>
+          <b>The Conrad Challenge.</b> The Conrad Challenge is a national, year-long STEM and
+          innovation competition (founded in honor of astronaut Pete Conrad) in which student teams
+          design solutions to real-world problems and pitch them to a panel of expert judges.
+          ChemoCool was named a <b>National Finalist</b>, advancing to the final round for its
+          approach to a genuine clinical problem.
+        </p>
+
         <div class="links">
           <b>Links:</b>
           <a href="https://chemocool.wixsite.com/chemocool-1" target="_blank">ChemoCool site</a>
@@ -481,7 +517,7 @@
     'work': 'g-work', 'work-snowflake': 'g-work', 'work-dolcera': 'g-work',
     'work-forti': 'g-work', 'work-heller': 'g-work',
     'projects': 'g-projects', 'proj-scikitbio': 'g-projects',
-    'proj-coffeemeet': 'g-projects',
+    'proj-coffeemeet': 'g-projects', 'proj-harvardmed': 'g-projects',
     'teaching': 'g-teaching', 'teach-wharton': 'g-teaching', 'teach-robotics': 'g-teaching',
     'awards': 'g-awards', 'award-anthropic': 'g-awards',
     'award-harvard': 'g-awards', 'award-yc': 'g-awards', 'award-conrad': 'g-awards'
