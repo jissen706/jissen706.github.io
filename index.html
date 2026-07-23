@@ -198,11 +198,6 @@
           <li>Designed and built an analytics datastore for 10k+ corporate endpoints; implemented Snowpipe ingestions, a custom data agent, and an observability platform, projected to save $1M+ annually.</li>
           <li>Optimized CrowdStrike Falcon&rsquo;s OS-level performance on macOS, reducing CPU usage by ~40% and automating recovery of stale sensors.</li>
         </ul>
-        <div class="links">
-          <b>Links:</b>
-          <a href="#" target="_blank">Company</a> &middot;
-          <a href="#" target="_blank">Add link</a>
-        </div>
       </section>
 
       <section id="work-dolcera">
@@ -213,11 +208,6 @@
           <li>Built an EC2 routing system optimizing idle-time compute and predictive warm starts/caching, delivering 6-figure savings.</li>
           <li>Improved patent ingestion and the RAG pipeline across API fetching, parsing, and retrieval to boost processing reliability.</li>
         </ul>
-        <div class="links">
-          <b>Links:</b>
-          <a href="#" target="_blank">Company</a> &middot;
-          <a href="#" target="_blank">Add link</a>
-        </div>
       </section>
 
       <section id="work-forti">
@@ -228,11 +218,6 @@
           <li>Developed a sliding-window inference pipeline to detect intracranial-pressure elevations from 4 physiological waveforms.</li>
           <li>Built signal-processing software for artifact removal, band-pass filtering, normalization, and Fourier transforms.</li>
         </ul>
-        <div class="links">
-          <b>Links:</b>
-          <a href="#" target="_blank">Lab</a> &middot;
-          <a href="#" target="_blank">Add link</a>
-        </div>
       </section>
 
       <section id="work-heller">
@@ -243,11 +228,6 @@
           <li>Developed software for a thermoelectric cooling glove to mitigate CIPN in cancer patients; co-inventor on a provisional patent.</li>
           <li>Built a vasoconstriction classifier integrating temperature, doppler blood-flow, and heat-flux to automatically regulate cooling.</li>
         </ul>
-        <div class="links">
-          <b>Links:</b>
-          <a href="#" target="_blank">Lab</a> &middot;
-          <a href="#" target="_blank">Patent</a>
-        </div>
       </section>
 
       <!-- ===================== PROJECTS: OVERVIEW ===================== -->
@@ -284,8 +264,8 @@
         </ul>
         <div class="links">
           <b>Links:</b>
-          <a href="https://github.com/scikit-bio/scikit-bio" target="_blank">Project repo</a> &middot;
-          <a href="#" target="_blank">My contributions</a>
+          <a href="https://scikit.bio/index.html" target="_blank">scikit.bio</a> &middot;
+          <a href="https://github.com/scikit-bio/scikit-bio" target="_blank">Project repo</a>
         </div>
       </section>
 
@@ -299,8 +279,7 @@
         </ul>
         <div class="links">
           <b>Links:</b>
-          <a href="#" target="_blank">Live site</a> &middot;
-          <a href="#" target="_blank">Repo</a>
+          <a href="https://coffeemeet-frontend.vercel.app/" target="_blank">Live site</a>
         </div>
       </section>
 
@@ -313,8 +292,7 @@
         </ul>
         <div class="links">
           <b>Links:</b>
-          <a href="#" target="_blank">Club</a> &middot;
-          <a href="#" target="_blank">Materials</a>
+          <a href="https://wudac.org/" target="_blank">WUDAC</a>
         </div>
       </section>
 
@@ -351,8 +329,7 @@
         </ul>
         <div class="links">
           <b>Links:</b>
-          <a href="#" target="_blank">Devpost</a> &middot;
-          <a href="#" target="_blank">Repo</a>
+          <a href="https://github.com/jissen706/Timbre" target="_blank">GitHub (Timbre)</a>
         </div>
       </section>
 
@@ -365,8 +342,8 @@
         </ul>
         <div class="links">
           <b>Links:</b>
-          <a href="#" target="_blank">Devpost</a> &middot;
-          <a href="#" target="_blank">Repo</a>
+          <a href="https://www.hackrare.org/magellan-2026" target="_blank">HackRare project page</a> &middot;
+          <a href="https://github.com/jissen706/Magellan" target="_blank">GitHub (Magellan)</a>
         </div>
       </section>
 
@@ -377,10 +354,11 @@
         <ul class="pts">
           <li>Built a real-time overhearing voice agent with persistent memory, async retrieval, and approval-gated tool execution.</li>
         </ul>
+        <img src="images/yc-team.jpg" alt="Y Combinator Hackathon team" onerror="this.style.display='none'" style="max-width:340px;width:100%;margin-top:6px;border:1px solid #ccc;border-radius:4px;">
         <div class="links">
           <b>Links:</b>
-          <a href="#" target="_blank">Devpost</a> &middot;
-          <a href="#" target="_blank">Repo</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7462224927262273537/" target="_blank">LinkedIn post</a> &middot;
+          <a href="https://github.com/bliu8/chief" target="_blank">GitHub (Chief)</a>
         </div>
       </section>
 
@@ -415,10 +393,11 @@
 </div>
 
 <script>
-  var navLinks = document.querySelectorAll('#sidebar a.nav');
   var sections = document.querySelectorAll('#content section');
+  var allNav = document.querySelectorAll('#sidebar a.nav');
+  var groups = document.querySelectorAll('#sidebar .group');
 
-  // Which sidebar group each section belongs to (so the right dropdown opens)
+  // Which sidebar group each section belongs to
   var groupOf = {
     'work': 'g-work', 'work-snowflake': 'g-work', 'work-dolcera': 'g-work',
     'work-forti': 'g-work', 'work-heller': 'g-work',
@@ -428,30 +407,57 @@
     'award-harvard': 'g-awards', 'award-yc': 'g-awards'
   };
 
-  function show(id) {
-    // show the target section
+  function showSection(id) {
     for (var k = 0; k < sections.length; k++) sections[k].className = '';
     var target = document.getElementById(id);
     if (target) target.className = 'on';
-
-    // highlight the matching sidebar link(s)
-    for (var j = 0; j < navLinks.length; j++) {
-      navLinks[j].classList.toggle('active', navLinks[j].getAttribute('href') === '#' + id);
-    }
-
-    // open the owning group, close the others
-    var groups = document.querySelectorAll('#sidebar .group');
-    var owner = groupOf[id];
-    for (var g = 0; g < groups.length; g++) {
-      groups[g].classList.toggle('open', groups[g].id === owner);
+    for (var j = 0; j < allNav.length; j++) {
+      allNav[j].classList.toggle('active', allNav[j].getAttribute('href') === '#' + id);
     }
     window.scrollTo(0, 0);
   }
 
-  for (var i = 0; i < navLinks.length; i++) {
-    navLinks[i].onclick = function (e) {
+  // Open exactly one group (or none if ownerId is null)
+  function setOpenGroup(ownerId) {
+    for (var g = 0; g < groups.length; g++) {
+      groups[g].classList.toggle('open', groups[g].id === ownerId);
+    }
+  }
+
+  // Group headers: click toggles the dropdown open/closed
+  for (var gi = 0; gi < groups.length; gi++) {
+    (function (group) {
+      var header = group.querySelector('a.top');
+      header.onclick = function (e) {
+        e.preventDefault();
+        if (group.classList.contains('open')) {
+          group.classList.remove('open');            // collapse (keep current content)
+        } else {
+          setOpenGroup(group.id);                     // expand this, collapse others
+          showSection(this.getAttribute('href').substring(1));
+        }
+      };
+    })(groups[gi]);
+  }
+
+  // Submenu items, "view details" links, and back links: jump to a page, keep its group open
+  var jumpLinks = document.querySelectorAll('#sidebar .submenu a.nav, #content a.nav');
+  for (var i = 0; i < jumpLinks.length; i++) {
+    jumpLinks[i].onclick = function (e) {
       e.preventDefault();
-      show(this.getAttribute('href').substring(1));
+      var id = this.getAttribute('href').substring(1);
+      showSection(id);
+      setOpenGroup(groupOf[id] || null);
+    };
+  }
+
+  // Plain top links (Home, Skills): navigate and collapse all groups
+  var plainTops = document.querySelectorAll('#sidebar > ul > li:not(.group) > a.top');
+  for (var p = 0; p < plainTops.length; p++) {
+    plainTops[p].onclick = function (e) {
+      e.preventDefault();
+      showSection(this.getAttribute('href').substring(1));
+      setOpenGroup(null);
     };
   }
 </script>
