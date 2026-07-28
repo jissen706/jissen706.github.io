@@ -92,7 +92,31 @@
 
   .back { display: inline-block; margin-bottom: 14px; font-size: 13px; }
 
-  .skillgroup { margin-bottom: 14px; }
+  .skillgroup { margin-bottom: 14px; line-height: 2.1; }
+
+  /* hover-to-see-where-used tooltips */
+  .skill { position: relative; cursor: help; border-bottom: 1px dotted #9aa4ad; white-space: nowrap; }
+  .skill:hover { color: #1a4d80; border-bottom-color: #1a4d80; }
+  .skill::after {
+    content: attr(data-use);
+    position: absolute;
+    left: 0;
+    bottom: 150%;
+    width: 230px;
+    white-space: normal;
+    background: #33465a;
+    color: #fff;
+    padding: 7px 9px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.45;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.12s;
+    z-index: 20;
+  }
+  .skill:hover::after { opacity: 1; visibility: visible; }
 
   #footer { border-top: 1px solid #ccc; margin-top: 30px; padding-top: 12px; color: #999; font-size: 12px; }
 </style>
@@ -516,17 +540,46 @@
       <!-- ===================== SKILLS ===================== -->
       <section id="skills">
         <h2>Skills</h2>
+        <p class="meta" style="margin-bottom:14px;">Hover a skill to see where I&rsquo;ve used it.</p>
 
         <div class="skillgroup">
-          <b>Languages:</b> Python, Java, C, C++, OCaml, SQL, JavaScript, Bash
+          <b>Languages:</b>
+          <span class="skill" data-use="ML research (Forti &amp; Heller Labs), scikit-bio, hackathons, Wharton teaching">Python</span>,
+          <span class="skill" data-use="Coursework and backend services">Java</span>,
+          <span class="skill" data-use="Computer Architecture &amp; Operating Systems coursework">C</span>,
+          <span class="skill" data-use="Systems and performance-oriented coursework">C++</span>,
+          <span class="skill" data-use="Programming Languages course at Penn">OCaml</span>,
+          <span class="skill" data-use="Snowflake datastore, CoffeeMeet, analytics">SQL</span>,
+          <span class="skill" data-use="CoffeeMeet frontend and web apps">JavaScript</span>,
+          <span class="skill" data-use="Dev tooling, CI/CD, Linux automation">Bash</span>
         </div>
 
         <div class="skillgroup">
-          <b>Frameworks &amp; Libraries:</b> PyTorch, scikit-learn, Hugging Face, React, Next.js, NumPy, pandas, SciPy, Dash
+          <b>Frameworks &amp; Libraries:</b>
+          <span class="skill" data-use="Timbre (Parkinson&rsquo;s audio ML), Harvard Med tumor detection, Forti ICP model">PyTorch</span>,
+          <span class="skill" data-use="ML research and Wharton instruction">scikit-learn</span>,
+          <span class="skill" data-use="NLP / RAG work at Dolcera and hackathons">Hugging Face</span>,
+          <span class="skill" data-use="CoffeeMeet frontend">React</span>,
+          <span class="skill" data-use="CoffeeMeet and web projects">Next.js</span>,
+          <span class="skill" data-use="Signal processing (Forti/Heller) and ML">NumPy</span>,
+          <span class="skill" data-use="Data analysis, analytics, Wharton teaching">pandas</span>,
+          <span class="skill" data-use="Signal processing: filtering &amp; Fourier transforms (Forti Lab)">SciPy</span>,
+          <span class="skill" data-use="Data-visualization dashboards">Dash</span>
         </div>
 
         <div class="skillgroup">
-          <b>Data &amp; Infrastructure:</b> AWS (EC2, API Gateway, Lambda, Secrets Manager, S3), Snowflake, Kafka, PostgreSQL, dbt, Docker, Redis, Linux, Git, CI/CD, REST APIs
+          <b>Data &amp; Infrastructure:</b>
+          <span class="skill" data-use="Dolcera EC2 routing &amp; RAG pipeline">AWS (EC2, API Gateway, Lambda, Secrets Manager, S3)</span>,
+          <span class="skill" data-use="Snowflake internship: datastore, Snowpipe, observability">Snowflake</span>,
+          <span class="skill" data-use="Streaming data pipelines (Snowflake)">Kafka</span>,
+          <span class="skill" data-use="CoffeeMeet and backend services">PostgreSQL</span>,
+          <span class="skill" data-use="Analytics transformations (Snowflake)">dbt</span>,
+          <span class="skill" data-use="Containerized hackathon &amp; research services">Docker</span>,
+          <span class="skill" data-use="Caching / predictive warm starts (Dolcera)">Redis</span>,
+          <span class="skill" data-use="Development environment and servers">Linux</span>,
+          <span class="skill" data-use="Every project; scikit-bio contributions">Git</span>,
+          <span class="skill" data-use="scikit-bio CI security and deployments">CI/CD</span>,
+          <span class="skill" data-use="Dolcera patent ingestion, CoffeeMeet integrations">REST APIs</span>
         </div>
 
         <div class="skillgroup">
